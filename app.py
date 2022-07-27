@@ -1,6 +1,5 @@
 from flask import Flask, request
-from operations import add
-
+from operations import add, sub, mult, div
 
 app = Flask(__name__)
 
@@ -10,5 +9,28 @@ def add_numbers():
 
     a = request.args["a"]
     b = request.args["b"]
-    return f"<body>{add(a,b)}</body>" 
+    return f"<body>{add(int(a),int(b))}</body>" 
 
+@app.get("/sub")
+def sub_numbers():
+    """subtract a and b and returns result as body"""
+
+    a = request.args["a"]
+    b = request.args["b"]
+    return f"<body>{sub(int(a),int(b))}</body>" 
+
+@app.get("/mult")
+def mult_numbers():
+    """multiply a and b and returns result as body"""
+
+    a = request.args["a"]
+    b = request.args["b"]
+    return f"<body>{mult(int(a),int(b))}</body>" 
+
+@app.get("/div")
+def div_numbers():
+    """divides a and b and returns result as body"""
+
+    a = request.args["a"]
+    b = request.args["b"]
+    return f"<body>{div(int(a),int(b))}</body>" 
